@@ -1,0 +1,24 @@
+{
+    "books": [
+        {
+            "id": 1,
+            "title": "Биба и Боба. Приключения",
+            "author": "Саска Камыска",
+            "date_release": "2023",
+            "image": null,
+            "who_taken": null,
+            "date_taken": null,
+            "date_return": null
+        },
+        {
+            "id": 2,
+            "title": "Программирование на Web. Почему Господь нас покинул?",
+            "author": "Колпаков А.С.",
+            "date_release": "2021",
+            "image": null,
+            "who_taken": null,
+            "date_taken": null,
+            "date_return": null
+        }
+    ]
+}
