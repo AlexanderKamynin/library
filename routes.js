@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 let library_books = require("./json/books.json").books;
-let current_user = "Saska Kamishka";
 
 
 router.get("/", (request, response) => {
@@ -10,7 +9,7 @@ router.get("/", (request, response) => {
 
 router.get("/books", (request, response) => {
     response.render("main", {
-        user_name: "Saska Kamishka",
+        user_name: "noname",
         books: library_books
     })
 });
@@ -19,23 +18,8 @@ router.get("/books", (request, response) => {
 // books adding
 router.get("/books/add", (request, response) => {
     response.render("add", {
-        books: library_books
     });
 });
-
-// books deleting
-// router.get("/books/delete", (request, response) => {
-
-// });
-
-// books card
-//TODO: add the checks for book_id that is not exist
-router.get("/books/:book_id", (request, response) => {
-    response.render("book", {
-        book: library_books[request.params.book_id - 1]
-    });
-});
-
 
 router.post("/books/add_action", (request, response) => {
     let new_book = {
@@ -43,7 +27,6 @@ router.post("/books/add_action", (request, response) => {
         "title": request.body.title,
         "author": request.body.author,
         "date_release": request.body.date_release,
-        "image": null,
         "is_taken": false,
         "who_taken": null,
         "date_taken": null,
@@ -52,12 +35,44 @@ router.post("/books/add_action", (request, response) => {
 
     library_books.push(new_book);
 
-    response.redirect("/books");
+    response.redirect("/books/add");
+});
+
+
+// books deleting
+router.get("/books/delete", (request, response) => {
+    response.render("delete", {
+    })
+});
+
+router.post("/books/delete_action", (request, response) => {
+    const remove_idx = library_books.map((book) => {
+        return parseInt(book.id);
+    }).indexOf(parseInt(request.body.delete_id));
+
+    if (remove_idx === -1)
+    {
+        //response.send(`Id не существует или введен некорректно: ${request.body.delete_id}`);
+    }
+    else
+    {
+        //(`Книга с id ${request.body.delete_id} успешно удалена!`);
+        library_books.splice(remove_idx, 1);
+    }
+
+    response.redirect("/books/delete")
+})
+
+// books card
+router.get("/books/:book_id([0-9]{1,})", (request, response) => {
+    response.render("book", {
+        book: library_books[request.params.book_id - 1]
+    });
 });
 
 
 // books edit
-router.get("/books/:book_id/edit", (request, response) => {
+router.get("/books/:book_id([0-9]{1,})/edit", (request, response) => {
     let requested_book = library_books[request.params.book_id - 1]
     response.render("edit", {
         book: requested_book
@@ -65,7 +80,7 @@ router.get("/books/:book_id/edit", (request, response) => {
 });
 
 
-router.post("/books/:book_id/edit_action", (request, response) => {
+router.post("/books/:book_id([0-9]{1,})/edit_action", (request, response) => {
     const book_idx = library_books.map((book) => {
         return parseInt(book.id)
     }).indexOf(parseInt(request.params.book_id));

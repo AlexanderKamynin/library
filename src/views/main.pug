@@ -21,4 +21,4 @@ html
                 each book in books
                     li
                         a(href="/books/" + book.id) 
-                            =`${book.id}: ${book.author} . ${book.title}`
+                            =`${book.id}: ${book.title} (автор: ${book.author}, год: ${book.date_release})`
