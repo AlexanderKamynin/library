@@ -1,4 +1,8 @@
 const server = require("express")(); // Создали сервер
+
+const body_parser = require("body-parser");
+server.use(body_parser.urlencoded({ extended: true }));
+
 server.set("view engine", "pug");
 server.set("views", "./src/views");
 

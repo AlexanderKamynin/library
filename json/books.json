@@ -6,6 +6,7 @@
             "author": "Саска Камыска",
             "date_release": "2023",
             "image": null,
+            "is_taken": false,
             "who_taken": null,
             "date_taken": null,
             "date_return": null
@@ -16,6 +17,7 @@
             "author": "Колпаков А.С.",
             "date_release": "2021",
             "image": null,
+            "is_taken": false,
             "who_taken": null,
             "date_taken": null,
             "date_return": null

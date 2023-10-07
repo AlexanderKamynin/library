@@ -2,8 +2,27 @@ doctype html
 html
     head
         meta(charset="utf-8")
-        title `${book.name}`
+        title Страница книги
         link(rel='stylesheet', href='/src/style/book.css')
     body
+        div
+            form(method="get", action=`/books/`)
+                button(type="submit")
+                    =`Вернуться`
+
         div 
             =`${book.author} . ${book.title}`
+
+        div 
+            if book.is_taken == false
+                form(method="get", action=`/books/${book.id}/take`)
+                    button(type="submit")
+                        ="Взять"
+            else
+                form(method="get", action=`/books/${book.id}/return`)
+                    button(type="submit")
+                        ="Вернуть"
+
+            form(method="get", action=`/books/${book.id}/edit`)
+                button(type="submit")
+                    ="Редактировать информацию"

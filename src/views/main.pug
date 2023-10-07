@@ -7,7 +7,16 @@ html
     body
         header
             .header_name Библиотека
-        div
+        div.buttons
+            form(method="get", action="/books/add")
+                button(type="submit")
+                    =`Добавить книгу`
+            form(method="get", action="/books/delete")
+                button(type="submit")
+                    =`Удалить книгу`
+        div.books
+            p 
+                =`Список кринжек`
             ul
                 each book in books
                     li
