@@ -1,0 +1,9 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title `${book.name}`
+        link(rel='stylesheet', href='/src/style/book.css')
+    body
+        div 
+            =`${book.author} . ${book.title}`

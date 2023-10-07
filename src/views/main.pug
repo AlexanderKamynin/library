@@ -7,9 +7,9 @@ html
     body
         header
             .header_name Библиотека
-        section
+        div
             ul
                 each book in books
                     li
-                        a 
-                            =`${book.id}: ${book.title} (${book.author})`
+                        a(href="/books/" + book.id) 
+                            =`${book.id}: ${book.author} . ${book.title}`
