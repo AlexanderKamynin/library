@@ -48,6 +48,7 @@ router.get("/books/delete", (request, response) => {
     })
 });
 
+
 router.post("/books/delete_action", (request, response) => {
     remove_idx = library_books.map((book) => {
         return parseInt(book.id);
@@ -57,24 +58,17 @@ router.post("/books/delete_action", (request, response) => {
     {
         response.send(`Id не существует или введен некорректно: ${request.body.delete_id}`);
     }
-    // else
-    // {
-    //     response.render("agree", {
-    //         book_id: request.body.delete_id
-    //     });
-    // }
+    else
+    {
+        if (request.body.agree === "Да")
+        {
+            library_books.splice(remove_idx, 1);
+            remove_idx = -1;
+        }
+
+        response.redirect("/books/delete");
+    }
 })
-
-// router.post("/books/delete_action/agree", (request, response) => {
-
-//     if (request.body.agree === "Да")
-//     {
-//         library_books.splice(remove_idx, 1);
-//         remove_idx = -1;
-//     }
-
-//     response.redirect("/books/delete");
-// })
 
 
 // books card
