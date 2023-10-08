@@ -3,6 +3,9 @@ const router = express.Router();
 let library_books = require("./json/books.json").books;
 
 
+let remove_idx = -1;
+
+
 router.get("/", (request, response) => {
     response.redirect("/books")
 })
@@ -46,22 +49,33 @@ router.get("/books/delete", (request, response) => {
 });
 
 router.post("/books/delete_action", (request, response) => {
-    const remove_idx = library_books.map((book) => {
+    remove_idx = library_books.map((book) => {
         return parseInt(book.id);
     }).indexOf(parseInt(request.body.delete_id));
 
     if (remove_idx === -1)
     {
-        //response.send(`Id не существует или введен некорректно: ${request.body.delete_id}`);
+        response.send(`Id не существует или введен некорректно: ${request.body.delete_id}`);
     }
-    else
-    {
-        //(`Книга с id ${request.body.delete_id} успешно удалена!`);
-        library_books.splice(remove_idx, 1);
-    }
-
-    response.redirect("/books/delete")
+    // else
+    // {
+    //     response.render("agree", {
+    //         book_id: request.body.delete_id
+    //     });
+    // }
 })
+
+// router.post("/books/delete_action/agree", (request, response) => {
+
+//     if (request.body.agree === "Да")
+//     {
+//         library_books.splice(remove_idx, 1);
+//         remove_idx = -1;
+//     }
+
+//     response.redirect("/books/delete");
+// })
+
 
 // books card
 router.get("/books/:book_id([0-9]{1,})", (request, response) => {
