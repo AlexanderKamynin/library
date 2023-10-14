@@ -12,7 +12,6 @@ router.get("/", (request, response) => {
 
 router.get("/books", (request, response) => {
     response.render("main", {
-        user_name: "noname",
         books: library_books
     })
 });
@@ -32,7 +31,6 @@ router.post("/books/add_action", (request, response) => {
         "date_release": request.body.date_release,
         "is_taken": false,
         "who_taken": null,
-        "date_taken": null,
         "date_return": null
     };
 
@@ -69,6 +67,43 @@ router.post("/books/delete_action", (request, response) => {
         response.redirect("/books/delete");
     }
 })
+
+
+
+// books take
+router.post("/books/take_action", (request, response) => {
+    let take_idx = library_books.map((book) => {
+        return parseInt(book.id);
+    }).indexOf(parseInt(request.body.take_id));
+    
+    if (request.body.action_type === "undo")
+    {
+        //response.redirect("/books/" + request.body.take_id);
+    }
+    else if (request.body.action_type === "take")
+    {
+        library_books[take_idx].is_taken = true;
+        library_books[take_idx].who_taken = request.body.who_taken;
+        library_books[take_idx].date_return = request.body.date_return;
+    }
+
+    response.send();
+});
+
+
+// books return
+router.post("/books/return_action", (request, response) => {
+    let return_idx = library_books.map((book) => {
+        return parseInt(book.id);
+    }).indexOf(parseInt(request.body.return_id));
+
+    library_books[return_idx].who_taken = null;
+    library_books[return_idx].date_return = null;
+    library_books[return_idx].is_taken = false;
+
+    response.send();
+});
+
 
 
 // books filter

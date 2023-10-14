@@ -7,7 +7,6 @@
             "date_release": "2018",
             "is_taken": false,
             "who_taken": null,
-            "date_taken": null,
             "date_return": null
         },
         {
@@ -17,7 +16,6 @@
             "date_release": "2021",
             "is_taken": false,
             "who_taken": null,
-            "date_taken": null,
             "date_return": null
         },
         {
@@ -27,7 +25,6 @@
             "date_release": "2017",
             "is_taken": false,
             "who_taken": null,
-            "date_taken": null,
             "date_return": null
         }
     ]
