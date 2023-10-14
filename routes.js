@@ -71,6 +71,55 @@ router.post("/books/delete_action", (request, response) => {
 })
 
 
+// books filter
+router.post("/books/filter_action", (request, response) => {
+    const filter_type = request.body.filter_type;
+    let library_books_filtered = library_books.slice();
+    switch(filter_type)
+    {
+        case "all":
+            // nothing to do
+            break;
+        case "title":
+            library_books_filtered.sort((a,b) => {
+                if(a.title > b.title)
+                {
+                    return 1;
+                }
+                else if(a.title < b.title)
+                {
+                    return -1;
+                }
+
+                return 0;
+            });
+            break;
+        case "date":
+            library_books_filtered.sort((a,b) => {
+                if(a.date_release > b.date_release)
+                {
+                    return 1;
+                }
+                else if(a.date_release < b.date_release)
+                {
+                    return -1;
+                }
+
+                return 0;
+            });
+            break;
+        case "is_taken":
+            library_books_filtered = library_books_filtered.filter((book) => !book.is_taken);
+            break;
+        default:
+            //nothing to do
+            break;
+    }
+
+    response.json(library_books_filtered);
+})
+
+
 // books card
 router.get("/books/:book_id([0-9]{1,})", (request, response) => {
     response.render("book", {

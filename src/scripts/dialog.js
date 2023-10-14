@@ -5,7 +5,7 @@ function delete_action()
     dialog_elem.classList.add('active');
 }
 
-function processing_yes()
+function processing_delete(answer)
 {
     const delete_id = document.getElementById('delete_input').value;
     dialog_elem.classList.remove('active');
@@ -17,24 +17,7 @@ function processing_yes()
         },
         body: JSON.stringify({
             delete_id: delete_id,
-            agree: 'Да'
-        })
-    })
-}
-
-function processing_no()
-{
-    const delete_id = document.getElementById('delete_input').value;
-    dialog_elem.classList.remove('active');
-
-    fetch("/books/delete_action", {
-        method: "post",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            delete_id: delete_id,
-            agree: 'Нет'
+            agree: answer
         })
     })
 }

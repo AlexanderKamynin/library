@@ -22,9 +22,9 @@ html
                     p
                         ="Вы действительно хотите удалить книгу?"
                     div 
-                        input(type="submit", value="Да", name="agree", onclick="processing_yes()")
+                        input(type="submit", value="Да", name="agree", onclick="processing_delete('Да')")
                     div 
-                        input(type="submit", value="Нет", name="agree", onclick="processing_no()")
+                        input(type="submit", value="Нет", name="agree", onclick="processing_delete('Нет')")
 
 
     script(src="/src/scripts/dialog.js")

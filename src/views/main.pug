@@ -4,9 +4,11 @@ html
         meta(charset="utf-8")
         title Library
         link(rel='stylesheet', href='/src/style/main.css')
+
     body
         header
             .header_name Библиотека
+
         div.buttons
             form(method="get", action="/books/add")
                 button(type="submit")
@@ -14,6 +16,22 @@ html
             form(method="get", action="/books/delete")
                 button(type="submit")
                     =`Удалить книгу`
+
+        div.filter
+            form(action="")
+                label(for="filter")
+                    ="Тип фильтрации"
+
+                select(name="filter", id="filter_type", onchange="processing_filter()")
+                    option(value="all")
+                        ="Вывести все"
+                    option(value="title")
+                        ="По названию"
+                    option(value="date")
+                        ="По дате"
+                    option(value="is_taken")
+                        ="Вывести только в наличии"
+
         div.books
             p 
                 =`Список кринжек`
@@ -22,3 +40,5 @@ html
                     li
                         a(href="/books/" + book.id) 
                             =`${book.id}: ${book.title} (автор: ${book.author}, год: ${book.date_release})`
+    
+    script(src="/src/scripts/filter.js")
