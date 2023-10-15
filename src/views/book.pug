@@ -11,13 +11,16 @@ html
                     =`Вернуться`
 
         div 
-            =`${book.author} . ${book.title}`
+            =`${book.author} - ${book.title} (${book.date_release} год издания)`
 
         div 
             if book.is_taken == false
                 button(type="submit", onclick="take_action('take')")
                     ="Взять"
             else
+                div 
+                    =`Книга забронирована на ${book.who_taken} до ${book.date_return}`
+
                 button(type="submit", onclick="take_action('return')")
                     ="Вернуть"
 

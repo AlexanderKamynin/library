@@ -131,11 +131,11 @@ router.post("/books/filter_action", (request, response) => {
             break;
         case "date":
             library_books_filtered.sort((a,b) => {
-                if(a.date_release > b.date_release)
+                if(a.date_return > b.date_return)
                 {
                     return 1;
                 }
-                else if(a.date_release < b.date_release)
+                else if(a.date_return < b.date_return)
                 {
                     return -1;
                 }
