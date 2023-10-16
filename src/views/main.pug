@@ -43,6 +43,12 @@ html
                 each book in books
                     li(class="w3-hover-blue")
                         a(href="/books/" + book.id) 
-                            =`${book.id}: ${book.title} (автор: ${book.author}, год: ${book.date_release})`
+                            =`${book.id}. ${book.title} (автор: ${book.author}, год: ${book.date_release})`
+                        if book.is_taken == false 
+                            div
+                                ="Книга в наличии"
+                        else 
+                            div 
+                                =`Книга забронирована на имя ${book.who_taken} до ${book.date_return}`
     
     script(src="/src/scripts/filter.js")

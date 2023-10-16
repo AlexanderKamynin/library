@@ -17,7 +17,9 @@ function processing_filter()
         books_container.innerHTML = `<p class="w3-center">Список книг:</p>`;
 
         books_container.innerHTML += "<ul class='w3-ul w3-card-4'>" + library_books_filtered.map(
-            book => `<li class="w3-hover-blue"><a href="/books/${book.id}">${book.id}: ${book.title} (автор: ${book.author}, год: ${book.date_release})</a></li>`
+            book => `<li class="w3-hover-blue"><a href="/books/${book.id}">${book.id}. ${book.title} (автор: ${book.author}, год: ${book.date_release})` 
+            +  (book.is_taken == false ? "<div>Книга в наличии</div>" : `<div>Книга забронирована на имя ${book.who_taken} до ${book.date_return}</div>`)
+            + `</a></li>`
         ).join("") + "</ul>";
     })
 }

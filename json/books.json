@@ -2,27 +2,45 @@
     "books": [
         {
             "id": 1,
-            "title": "Биба и Боба. Приключения",
-            "author": "Саска Камыска",
-            "date_release": "2018",
+            "title": "Гарри Поттер и философский камень",
+            "author": "Джоан К. Роулинг",
+            "date_release": "1997",
             "is_taken": false,
             "who_taken": null,
             "date_return": null
         },
         {
             "id": 2,
-            "title": "Программирование на Web. Почему Господь нас покинул?",
-            "author": "Колпаков А.С.",
-            "date_release": "2021",
+            "title": "Гарри Поттер и Кубок огня",
+            "author": "Джоан К. Роулинг",
+            "date_release": "2000",
             "is_taken": false,
             "who_taken": null,
             "date_return": null
         },
         {
             "id": 3,
-            "title": "Pomigite pj",
-            "author": "Saska Kamishka",
-            "date_release": "2017",
+            "title": "Зелёная миля",
+            "author": "Стивен Кинг",
+            "date_release": "1996",
+            "is_taken": false,
+            "who_taken": null,
+            "date_return": null
+        },
+        {
+            "id": 4,
+            "title": "Коллекция Дзюндзи Ито",
+            "author": "Дзюндзи Ито",
+            "date_release": "2021",
+            "is_taken": false,
+            "who_taken": null,
+            "date_return": null
+        },
+        {
+            "id": 5,
+            "title": "1384",
+            "author": "Мухачева Полина",
+            "date_release": "2021",
             "is_taken": false,
             "who_taken": null,
             "date_return": null
