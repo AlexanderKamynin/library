@@ -157,15 +157,24 @@ router.post("/books/filter_action", (request, response) => {
 
 // books card
 router.get("/books/:book_id([0-9]{1,})", (request, response) => {
+    let book_idx = library_books.map((book) => {
+        return parseInt(book.id);
+    }).indexOf(parseInt(request.params.book_id));
+
     response.render("book", {
-        book: library_books[request.params.book_id - 1]
+        book: library_books[book_idx]
     });
 });
 
 
 // books edit
 router.get("/books/:book_id([0-9]{1,})/edit", (request, response) => {
-    let requested_book = library_books[request.params.book_id - 1]
+    let book_idx = library_books.map((book) => {
+        return parseInt(book.id);
+    }).indexOf(parseInt(request.params.book_id));
+    
+    let requested_book = library_books[book_idx];
+
     response.render("edit", {
         book: requested_book
     });
