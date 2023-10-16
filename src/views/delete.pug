@@ -4,27 +4,32 @@ html
         meta(charset="utf-8")
         title Book delete
         link(rel='stylesheet', href='/src/style/delete.css')
+        link(rel="stylesheet", href='/src/font-awesome/css/font-awesome.min.css')
+        link(rel="stylesheet", href='/src/style/w3.css')
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     body
-        form(method="get", action=`/books/`)
-            button(type="submit")
-                =`Вернуться`
+        form.return(method="get", action=`/books/`)
+            button(type="submit", class="w3-button w3-square")
+                <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>
 
-        div
+        div.delete_form(class="w3-third w3-display-topmiddle")
             p 
                 ="Введите id удаляемой книги"
-            input(type="text", id="delete_input" name="delete_id")
+            input(type="text", id="delete_input" name="delete_id", class="w3-input w3-border")
 
-        div 
-            input(type="submit", value="Удалить книгу", onclick="delete_action()")
+            button(type="submit", class="w3-button w3-square", onclick="delete_action()")
+                <i class="fa fa-trash" aria-hidden="true"></i>
 
         dialog#dialog(open)
-            div#dialog_content
+            div.dialog_content(class="w3-container w3-padding-small", id="dialog_content")
                     p
                         ="Вы действительно хотите удалить книгу?"
-                    div 
-                        input(type="submit", value="Да", name="agree", onclick="processing_delete('Да')")
-                    div 
-                        input(type="submit", value="Нет", name="agree", onclick="processing_delete('Нет')")
+                    div.dialog_buttons
+                        input(type="submit", value="Да", class="w3-button w3-hover-green" name="agree", onclick="processing_delete('Да')")
+
+                        input(type="submit", value="Нет", class="w3-button w3-hover-red" name="agree", onclick="processing_delete('Нет')")
 
 
     script(src="/src/scripts/delete.js")

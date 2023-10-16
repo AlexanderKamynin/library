@@ -203,6 +203,10 @@ router.get("/src/style/:filename", (request, response) => {
 });
 
 
+router.get("/src/font-awesome/css/:filename", (request, response) => {
+    response.sendFile(__dirname + "/src/font-awesome/css/" + request.params.filename);
+})
+
 // for other pages
 router.get("*", (request, response)=>{
     response.status(404); // Ошибка – нет такой страницы

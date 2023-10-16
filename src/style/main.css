@@ -1,4 +1,18 @@
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
 
+.actions {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.filter {
+    padding-left: 10px;
+}
 
 .header_name {
     position: inherit;

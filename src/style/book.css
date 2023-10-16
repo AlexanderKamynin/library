@@ -1,7 +1,44 @@
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.book_info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    padding-top: 100px;
+}
+
+.return {
+    padding: 10px;
+}
+
+.book_status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
 
 #dialog {
     opacity: 0;
     visibility: hidden;
+}
+
+.dialog_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 #dialog.active 

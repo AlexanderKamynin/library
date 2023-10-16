@@ -4,21 +4,27 @@ html
         meta(charset="utf-8")
         title Book edit 
         link(rel='stylesheet', href='/src/style/edit.css')
+        link(rel="stylesheet", href='/src/font-awesome/css/font-awesome.min.css')
+        link(rel="stylesheet", href='/src/style/w3.css')
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     body
         div 
-            form(method="get", action=`/books/${book.id}`)
-                button(type="submit")
-                    =`Вернуться`
+            form.return(method="get", action=`/books/${book.id}`)
+                button(type="submit", class="w3-button w3-square")
+                    <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>
 
-            form(method="post", action=`/books/${book.id}/edit_action`)
-                p
+            form.edit_form(method="post", action=`/books/${book.id}/edit_action`, class="w3-container")
+                div(class="w3-third")
                     b Название:
-                    input(type="text", name="title", placeholder=book.title)
-                p
+                    input(type="text", name="title", placeholder=book.title, class="w3-input w3-border")
+                div(class="w3-third")
                     b Автор:
-                    input(type="text", name="author", placeholder=book.author)
-                p 
+                    input(type="text", name="author", placeholder=book.author, class="w3-input w3-border")
+                div(class="w3-third")
                     b Год публикации:
-                    input(type="text", name="date_release", placeholder=book.date_release)
+                    input(type="text", name="date_release", placeholder=book.date_release, class="w3-input w3-border")
                 div 
-                    input(type="submit", value="Сохранить изменения")
+                    button(type="submit", class="w3-button w3-square")
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>

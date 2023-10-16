@@ -1,0 +1,14 @@
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.edit_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.return {
+    padding: 10px;
+}

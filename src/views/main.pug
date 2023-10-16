@@ -3,41 +3,45 @@ html
     head
         meta(charset="utf-8")
         title Library
+        link(rel="stylesheet", href='/src/font-awesome/css/font-awesome.min.css')
         link(rel='stylesheet', href='/src/style/main.css')
-
+        link(rel='stylesheet', href='/src/style/w3.css')
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     body
-        header
+        header(class="w3-container")
             .header_name Библиотека
 
-        div.buttons
+        div.actions(сlass="w3-container")
             form(method="get", action="/books/add")
-                button(type="submit")
-                    =`Добавить книгу`
+                button(type="submit", class="w3-button w3-blue")
+                    ="Добавить"
+
             form(method="get", action="/books/delete")
-                button(type="submit")
-                    =`Удалить книгу`
+                button(type="submit", class="w3-button w3-red")
+                    ="Удалить"
 
-        div.filter
-            form(action="")
-                label(for="filter")
-                    ="Тип фильтрации"
+            div.filter
+                form(action="")
+                    <i class="fa fa-filter" aria-hidden="true"></i>
 
-                select(name="filter", id="filter_type", onchange="processing_filter()")
-                    option(value="all")
-                        ="Вывести все"
-                    option(value="title")
-                        ="По названию"
-                    option(value="date")
-                        ="По дате"
-                    option(value="is_taken")
-                        ="Вывести только в наличии"
+                    select(name="filter", id="filter_type", onchange="processing_filter()")
+                        option(value="all")
+                            ="Вывести все"
+                        option(value="title")
+                            ="По названию"
+                        option(value="date")
+                            ="По дате возврата"
+                        option(value="is_taken")
+                            ="Вывести только в наличии"
 
-        div.books
-            p 
-                =`Список кринжек`
-            ul
+        div.books(class="w3-container")
+            p(class="w3-center") 
+                =`Список книг:`
+            ul(class="w3-ul w3-card-4")
                 each book in books
-                    li
+                    li(class="w3-hover-blue")
                         a(href="/books/" + book.id) 
                             =`${book.id}: ${book.title} (автор: ${book.author}, год: ${book.date_release})`
     

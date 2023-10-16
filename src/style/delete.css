@@ -1,3 +1,19 @@
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.delete_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    padding-top: 100px;
+}
+
+.return {
+    padding: 10px;
+}
 
 
 #dialog {
@@ -5,8 +21,16 @@
     visibility: hidden;
 }
 
+.dialog_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 #dialog.active 
 {
     opacity: 1;
     visibility: visible;
 }
+
