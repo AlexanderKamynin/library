@@ -20,7 +20,7 @@ async function processing_take(action_type)
     dialog_elem.classList.remove('active');
 
     await fetch("/books/take_action", {
-        method: "post",
+        method: "POST",
         headers: {
             'Content-Type': 'application/json'
         },
